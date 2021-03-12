@@ -9,8 +9,9 @@ const CardsViewStyle = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 350px;
+    height: 25rem;
     overflow: scroll;
+    overflow-y: hidden;
     justify-content: space-between;
 `
 
@@ -27,8 +28,8 @@ const CardsView = () => {
                 obj['title'] = film.title
                 obj['imagePath'] = film['poster_path']
                 obj['date'] = film['release_date']
-
-                console.log(obj)
+                obj['score'] = film['vote_average']
+                // console.log(obj)
                 return obj;
             })
             setFilmList(final)
@@ -41,8 +42,9 @@ const CardsView = () => {
                 <SingleCard
                     imagePath={obj.imagePath}
                     title={obj.title}
-                    date={obj.date} />
-
+                    date={obj.date}
+                    score={(obj.score) * 10}
+                />
             ))}
         </CardsViewStyle>
     )
