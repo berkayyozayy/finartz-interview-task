@@ -1,10 +1,10 @@
 import './App.css';
-import FilmCard from './components/FilmCard';
+import CardsView from '../src/container/CardsView';
 
 function App() {
   return (
     <div className="App">
-      <FilmCard />
+      <CardsView />
     </div>
   );
 }
