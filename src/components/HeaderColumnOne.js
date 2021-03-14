@@ -26,6 +26,7 @@ const Selector = styled.div`
     margin-right: 1rem;
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
+    white-space: nowrap;
 `
 
 const SelectorLink = styled.a`
@@ -34,6 +35,7 @@ const SelectorLink = styled.a`
     font-weight: bold;
     color: rgb(4,37,65);
     cursor: pointer;
+    
 `
 
 const HeaderColumnOne = ({ handleClick }) => {

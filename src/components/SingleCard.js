@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisH, faPercent, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
+
 
 const CardContainer = styled.div`
     display: flex;
@@ -134,6 +135,19 @@ const getBorder = (score) => {
 
 const SingleCard = ({ title, date, imagePath, score }) => {
 
+    const [thumbsUp, setThumbsUp] = useState(true)
+    const [thumbsDown, setThumbsDown] = useState(true)
+
+    const handleThumbs = (thumbStatus) => {
+        console.log(thumbStatus)
+        if (thumbStatus === 'up') {
+            setThumbsDown(!thumbsDown)
+        }
+        if (thumbStatus === 'down') {
+            setThumbsUp(!thumbsUp)
+        }
+    }
+
     let borderStyle = getBorder(score)
     return (
         <CardContainer>
@@ -155,10 +169,10 @@ const SingleCard = ({ title, date, imagePath, score }) => {
                 </Score>
                 <ThumbsButtons>
                     <ThumbsUp>
-                        <FontAwesomeIcon icon={faThumbsUp} size='lg'></FontAwesomeIcon>
+                        <FontAwesomeIcon style={{ display: thumbsUp ? true : 'none' }} onClick={() => handleThumbs('up')} icon={faThumbsUp} size='lg'></FontAwesomeIcon>
                     </ThumbsUp>
                     <ThumbsDown>
-                        <FontAwesomeIcon icon={faThumbsDown} size='lg'></FontAwesomeIcon>
+                        <FontAwesomeIcon style={{ display: thumbsDown ? true : 'none' }} onClick={() => handleThumbs('down')} icon={faThumbsDown} size='lg'></FontAwesomeIcon>
                     </ThumbsDown>
                 </ThumbsButtons>
             </Wrapper>
