@@ -1,10 +1,10 @@
 import './App.css';
-import CardsView from '../src/container/CardsView';
+import SectionOne from './components/SectionOne';
 
 function App() {
   return (
     <div className="App">
-      <CardsView />
+      <SectionOne />
     </div>
   );
 }

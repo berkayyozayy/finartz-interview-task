@@ -15,38 +15,44 @@ const CardsViewStyle = styled.div`
     justify-content: space-between;
 `
 
-const CardsView = () => {
+const CardsView = ({ url }) => {
 
     const [filmList, setFilmList] = useState([])
 
     useEffect(() => {
-        axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=267478f9e81983e4ecdb72c1b7954e41&language=en-US&page=1').then((res) => {
+        axios.get(url).then((res) => {
             // console.log(res.data['results'])
+
             let result = res.data['results']
-            let final = result.map((film) => {
-                let obj = {}
-                obj['title'] = film.title
-                obj['imagePath'] = film['poster_path']
-                obj['date'] = film['release_date']
-                obj['score'] = film['vote_average']
-                // console.log(obj)
-                return obj;
-            })
-            setFilmList(final)
+            if (result) {
+                let final = result.map((film) => {
+                    let obj = {}
+                    obj['title'] = film.title
+                    obj['imagePath'] = film['poster_path']
+                    obj['date'] = film['release_date']
+                    obj['score'] = film['vote_average']
+                    // console.log(obj)
+                    return obj;
+                })
+                setFilmList(final)
+            }
         })
-    }, [])
+        console.log('URL ->>>> ', url)
+    }, [url])
 
     return (
-        <CardsViewStyle>
-            { filmList.map((obj) => (
-                <SingleCard
-                    imagePath={obj.imagePath}
-                    title={obj.title}
-                    date={obj.date}
-                    score={(obj.score) * 10}
-                />
-            ))}
-        </CardsViewStyle>
+        <>
+            <CardsViewStyle>
+                {filmList.map((obj) => (
+                    <SingleCard
+                        imagePath={obj.imagePath}
+                        title={obj.title}
+                        date={obj.date}
+                        score={(obj.score) * 10}
+                    />
+                ))}
+            </CardsViewStyle>
+        </>
     )
 }
 

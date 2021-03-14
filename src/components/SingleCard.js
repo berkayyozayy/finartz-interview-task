@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 const Image = styled.img`
     width: 10rem;
     height: 15rem;
-    border-radius: 5px;
+    border-radius: 10px;
     position: relative;
     cursor: pointer;
 `
@@ -25,7 +25,7 @@ const Image = styled.img`
 const Button = styled.button`
     width: 20px;
     height: 20px;
-    border-radius: 100%;
+    border-radius: 50%;
     border: none;
     outline: none;
     float: right;
@@ -48,7 +48,6 @@ const Content = styled.div`
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    
 `
 const Title = styled.p`
   font-family: 'Source Sans Pro', sans-serif;
@@ -69,7 +68,7 @@ const Date = styled.p`
 const Score = styled.div`
     width: 30px;
     height: 30px;
-    border: 2px solid lime;
+
     position: absolute;
     bottom: -1rem;
     margin-left: 10px;
@@ -98,27 +97,43 @@ const ScorePercent = styled.div`
 
 let IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 
-const SingleCard = ({ title, date, imagePath, score }) => (
-    <CardContainer>
-        <Wrapper>
-            <Image src={`${IMAGE_URL}${imagePath}`} />
-            <Button>
-                <FontAwesomeIcon icon={faEllipsisH} size='xs
+const getBorder = (score) => {
+    if (score < 50) {
+        return '.5px solid red'
+    } else if (score > 50 && score <= 70) {
+        return '.5px solid yellow'
+    } else if (score > 70) {
+        return '.5px solid lime'
+    }
+}
+
+const SingleCard = ({ title, date, imagePath, score }) => {
+
+    let borderStyle = getBorder(score)
+    return (
+        <CardContainer>
+            <Wrapper>
+                <Image src={`${IMAGE_URL}${imagePath}`} />
+                <Button>
+                    <FontAwesomeIcon icon={faEllipsisH} size='xs
                 '></FontAwesomeIcon>
-            </Button>
-            <Score>
-                <ScoreValue>
-                    {score}
-                </ScoreValue>
-                <ScorePercent>
-                    <FontAwesomeIcon icon={faPercent}></FontAwesomeIcon>
-                </ScorePercent>
-            </Score>
-        </Wrapper>
-        <Content>
-            <Title>{title}</Title>
-            <Date>{date}</Date>
-        </Content>
-    </CardContainer>
-)
+                </Button>
+                <Score style={{
+                    border: borderStyle
+                }}>
+                    <ScoreValue>
+                        {score}
+                    </ScoreValue>
+                    <ScorePercent>
+                        <FontAwesomeIcon icon={faPercent}></FontAwesomeIcon>
+                    </ScorePercent>
+                </Score>
+            </Wrapper>
+            <Content>
+                <Title>{title}</Title>
+                <Date>{date}</Date>
+            </Content>
+        </CardContainer>
+    )
+}
 export default SingleCard;
