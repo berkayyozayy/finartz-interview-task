@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import SingleCard from '../components/SingleCard'
 import axios from 'axios'
+
 import styled from 'styled-components'
 
-const API_KEY = '267478f9e81983e4ecdb72c1b7954e41'
+import SingleCard from '../components/SingleCard'
+
+
+// const API_KEY = '267478f9e81983e4ecdb72c1b7954e41'
 
 const CardsViewStyle = styled.div`
     display: flex;
@@ -37,7 +40,7 @@ const CardsView = ({ url }) => {
                 setFilmList(final)
             }
         })
-        console.log('URL ->>>> ', url)
+        // console.log('URL ->>>> ', url)
     }, [url])
 
     return (
@@ -52,6 +55,7 @@ const CardsView = ({ url }) => {
                     />
                 ))}
             </CardsViewStyle>
+
         </>
     )
 }

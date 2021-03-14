@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
-import { faPercent } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisH, faPercent, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 
 const CardContainer = styled.div`
     display: flex;
@@ -68,11 +67,10 @@ const Date = styled.p`
 const Score = styled.div`
     width: 30px;
     height: 30px;
-
     position: absolute;
     bottom: -1rem;
     margin-left: 10px;
-    z-index: 1;
+    z-index: 2;
     background-color: #000000;
     border-radius: 100%;
     display: flex;
@@ -94,6 +92,34 @@ const ScorePercent = styled.div`
     font-size: 0.3rem;
     margin-bottom: .5rem;
 `
+
+const ThumbsButtons = styled.div`
+    width: 30px;
+    height: 30px;
+    float: right;
+    margin-right: 1.5rem;
+    position: absolute;   
+    bottom: -.5rem;
+    display: flex;
+    align-items: center;
+    color: #dcdcdc;
+    cursor: pointer;
+    right: 0;
+    
+`
+
+const ThumbsUp = styled.div`
+    margin-right: 5px;
+    &:hover {
+        color: lime;
+    }
+`
+const ThumbsDown = styled.div`
+    &:hover {
+        color: #ff8000;
+    }
+`
+
 
 let IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 
@@ -128,6 +154,14 @@ const SingleCard = ({ title, date, imagePath, score }) => {
                         <FontAwesomeIcon icon={faPercent}></FontAwesomeIcon>
                     </ScorePercent>
                 </Score>
+                <ThumbsButtons>
+                    <ThumbsUp>
+                        <FontAwesomeIcon icon={faThumbsUp} size='lg'></FontAwesomeIcon>
+                    </ThumbsUp>
+                    <ThumbsDown>
+                        <FontAwesomeIcon icon={faThumbsDown} size='lg'></FontAwesomeIcon>
+                    </ThumbsDown>
+                </ThumbsButtons>
             </Wrapper>
             <Content>
                 <Title>{title}</Title>
