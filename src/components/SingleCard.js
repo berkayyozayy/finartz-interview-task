@@ -105,7 +105,6 @@ const ThumbsButtons = styled.div`
     color: #dcdcdc;
     cursor: pointer;
     right: 0;
-    
 `
 
 const ThumbsUp = styled.div`
@@ -114,22 +113,22 @@ const ThumbsUp = styled.div`
         color: lime;
     }
 `
+
 const ThumbsDown = styled.div`
     &:hover {
         color: #ff8000;
     }
 `
 
-
 let IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 
 const getBorder = (score) => {
     if (score < 50) {
-        return '.5px solid red'
+        return '2px solid red'
     } else if (score > 50 && score <= 70) {
-        return '.5px solid yellow'
+        return '2px solid yellow'
     } else if (score > 70) {
-        return '.5px solid lime'
+        return '2px solid lime'
     }
 }
 

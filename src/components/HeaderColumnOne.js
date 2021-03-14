@@ -60,4 +60,3 @@ const HeaderColumnOne = ({ handleClick }) => {
 }
 
 export default HeaderColumnOne
-
