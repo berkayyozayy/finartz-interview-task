@@ -36,28 +36,22 @@ const SelectorLink = styled.a`
     cursor: pointer;
 `
 
-const Header = ({ handleClick }) => {
+const HeaderColumnTwo = ({ handleClick }) => {
 
     return (
         <HeaderContainer>
-            <HeaderTitle>Popüler Olanlar</HeaderTitle>
+            <HeaderTitle>İzlemek Ücretsiz</HeaderTitle>
             <SelectorWrap>
                 <Selector>
-                    <SelectorLink onClick={() => handleClick('onStream')} >Yayın Akışı</SelectorLink>
+                    <SelectorLink onClick={() => handleClick('films')} >Filmler</SelectorLink>
                 </Selector>
                 <Selector>
-                    <SelectorLink onClick={() => handleClick('onTv')}>Televizyonda</SelectorLink>
-                </Selector>
-                <Selector>
-                    <SelectorLink onClick={() => handleClick('onForRent')}>Kiralık</SelectorLink>
-                </Selector>
-                <Selector>
-                    <SelectorLink onClick={() => handleClick('onCinema')}>Sinemalarda</SelectorLink>
+                    <SelectorLink onClick={() => handleClick('onTv')}>TV</SelectorLink>
                 </Selector>
             </SelectorWrap>
         </HeaderContainer>
     )
 }
 
-export default Header
+export default HeaderColumnTwo
 
