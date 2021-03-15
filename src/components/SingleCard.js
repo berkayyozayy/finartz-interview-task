@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisH, faPercent, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
 
 const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
 `
+
 const Wrapper = styled.div`
     position: relative;
 `
@@ -38,11 +37,13 @@ const Button = styled.button`
       cursor: pointer;
   }
 `
+
 const Content = styled.div`
     border-radius: 5px;
     display: flex;
     flex-direction: column;
 `
+
 const Title = styled.p`
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1rem;
@@ -128,12 +129,10 @@ const getBorder = (score) => {
 }
 
 const SingleCard = ({ title, date, imagePath, score }) => {
-
     const [thumbsUp, setThumbsUp] = useState(true)
     const [thumbsDown, setThumbsDown] = useState(true)
 
     const handleThumbs = (thumbStatus) => {
-        // console.log(thumbStatus)
         if (thumbStatus === 'up') {
             setThumbsDown(!thumbsDown)
         }

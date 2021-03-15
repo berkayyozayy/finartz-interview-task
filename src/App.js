@@ -1,4 +1,3 @@
-import './App.css';
 import SectionOne from './components/SectionOne';
 import SectionTwo from './components/SectionTwo';
 

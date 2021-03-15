@@ -36,6 +36,7 @@ const SelectorLink = styled.a`
     cursor: pointer;
     white-space: nowrap;
 `
+
 const ActiveStyle = {
     'backgroundColor': 'rgb(3, 37, 65) ',
     'color': '#c0fecf ',
@@ -61,7 +62,7 @@ const HeaderColumnTwo = ({ handleClick, activeTab }) => {
                     >TV</SelectorLink>
                 </Selector>
             </SelectorWrap>
-        </HeaderContainer >
+        </HeaderContainer>
     )
 }
 
