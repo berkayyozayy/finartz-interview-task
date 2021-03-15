@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisH, faPercent, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 const CardContainer = styled.div`
@@ -12,14 +14,6 @@ const CardContainer = styled.div`
 `
 const Wrapper = styled.div`
     position: relative;
-`
-
-const Image = styled.img`
-    width: 10rem;
-    height: 15rem;
-    border-radius: 10px;
-    position: relative;
-    cursor: pointer;
 `
 
 const Button = styled.button`
@@ -139,7 +133,7 @@ const SingleCard = ({ title, date, imagePath, score }) => {
     const [thumbsDown, setThumbsDown] = useState(true)
 
     const handleThumbs = (thumbStatus) => {
-        console.log(thumbStatus)
+        // console.log(thumbStatus)
         if (thumbStatus === 'up') {
             setThumbsDown(!thumbsDown)
         }
@@ -149,10 +143,17 @@ const SingleCard = ({ title, date, imagePath, score }) => {
     }
 
     let borderStyle = getBorder(score)
+
     return (
         <CardContainer>
             <Wrapper>
-                <Image src={`${IMAGE_URL}${imagePath}`} />
+                <LazyLoadImage
+                    src={`${IMAGE_URL}${imagePath}`}
+                    alt='film-poster...'
+                    width='150px'
+                    height='225px'
+                    effect='blur'
+                />
                 <Button>
                     <FontAwesomeIcon icon={faEllipsisH} size='xs
                 '></FontAwesomeIcon>
