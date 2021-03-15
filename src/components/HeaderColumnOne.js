@@ -38,23 +38,42 @@ const SelectorLink = styled.a`
     
 `
 
-const HeaderColumnOne = ({ handleClick }) => {
+const ActiveStyle = {
+    'backgroundColor': 'rgb(3, 37, 65) ',
+    'color': '#c0fecf ',
+    'borderRadius': '10px',
+    'transition': '.5s ease-out'
+}
+
+const HeaderColumnOne = ({ handleClick, activeTab }) => {
 
     return (
         <HeaderContainer>
             <HeaderTitle>Popüler Olanlar</HeaderTitle>
             <SelectorWrap>
                 <Selector>
-                    <SelectorLink onClick={() => handleClick('onStream')} >Yayın Akışı</SelectorLink>
+                    <SelectorLink
+                        onClick={() => handleClick('onStream')}
+                        style={activeTab === 'onStream' ? ActiveStyle : {}}
+                    >Yayın Akışı</SelectorLink>
                 </Selector>
                 <Selector>
-                    <SelectorLink onClick={() => handleClick('onTv')}>Televizyonda</SelectorLink>
+                    <SelectorLink
+                        onClick={() => handleClick('onTv')}
+                        style={activeTab === 'onTv' ? ActiveStyle : {}}
+                    >Televizyonda</SelectorLink>
                 </Selector>
                 <Selector>
-                    <SelectorLink onClick={() => handleClick('onForRent')}>Kiralık</SelectorLink>
+                    <SelectorLink
+                        onClick={() => handleClick('onForRent')}
+                        style={activeTab === 'onForRent' ? ActiveStyle : {}}
+                    >Kiralık</SelectorLink>
                 </Selector>
                 <Selector>
-                    <SelectorLink onClick={() => handleClick('onCinema')}>Sinemalarda</SelectorLink>
+                    <SelectorLink
+                        onClick={() => handleClick('onCinema')}
+                        style={activeTab === 'onCinema' ? ActiveStyle : {}}
+                    >Sinemalarda</SelectorLink>
                 </Selector>
             </SelectorWrap>
         </HeaderContainer>

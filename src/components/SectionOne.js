@@ -13,13 +13,17 @@ const URLs = {
 const SectionOne = () => {
 
     const [url, setUrl] = useState('https://api.themoviedb.org/3/movie/now_playing?api_key=267478f9e81983e4ecdb72c1b7954e41&language=en-US&page=1')
+    const [activeTab, setActiveTab] = useState('onStream')
+
     const handleClick = (text) => {
         setUrl(URLs[text])
+        setActiveTab(text)
     }
     return (
         <div>
             <HeaderColumnOne
                 handleClick={handleClick}
+                activeTab={activeTab}
             />
             <CardsView
                 url={url}

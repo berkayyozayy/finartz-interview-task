@@ -34,22 +34,34 @@ const SelectorLink = styled.a`
     font-weight: bold;
     color: rgb(4,37,65);
     cursor: pointer;
+    white-space: nowrap;
 `
+const ActiveStyle = {
+    'backgroundColor': 'rgb(3, 37, 65) ',
+    'color': '#c0fecf ',
+    'borderRadius': '10px',
+    'transition': '.25s ease-out'
+}
 
-const HeaderColumnTwo = ({ handleClick }) => {
-
+const HeaderColumnTwo = ({ handleClick, activeTab }) => {
     return (
         <HeaderContainer>
             <HeaderTitle>İzlemek Ücretsiz</HeaderTitle>
             <SelectorWrap>
                 <Selector>
-                    <SelectorLink onClick={() => handleClick('films')} >Filmler</SelectorLink>
+                    <SelectorLink
+                        onClick={() => handleClick('films')}
+                        style={activeTab === 'films' ? ActiveStyle : {}}
+                    >Filmler</SelectorLink>
                 </Selector>
                 <Selector>
-                    <SelectorLink onClick={() => handleClick('onTv')}>TV</SelectorLink>
+                    <SelectorLink
+                        onClick={() => handleClick('onTv')}
+                        style={activeTab === 'onTv' ? ActiveStyle : {}}
+                    >TV</SelectorLink>
                 </Selector>
             </SelectorWrap>
-        </HeaderContainer>
+        </HeaderContainer >
     )
 }
 
